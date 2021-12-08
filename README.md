@@ -1,1 +1,1 @@
-# Training
+# Assessment on callback and promises

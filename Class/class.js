@@ -1,10 +1,4 @@
-/**Create a class called as Student. 
- * The class should have the following functionality.
- * a) Create
- * b) fetchDetails
- * c) setMarks
- * d) getMarks
- */
+
 
  class student
  {

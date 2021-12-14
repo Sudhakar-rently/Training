@@ -18,6 +18,7 @@ function getUserinfo(userid)
     return new Promise((resolve,reject)=>
     {
         setTimeout(()=>{
+            console.log("We have the data");
             resolve(["info1","info2","info3"]);
         },2000);
     });
@@ -34,15 +35,11 @@ function infodetails(video)
 }
 
 loginuser("Anyone","Anything")
-.then(user => {
-    console.log(user);
-    getUserinfo(user.username)
-    .then(videos => {
-        console.log(videos);
-        infodetails(videos[0])
-            .then(detail => console.log(detail));
-    })
-})
+.then(user =>getUserinfo(user.username))
+.then(infos =>infodetails(infos[0]))
+.then(detail => console.log(detail));
+    
+
     
 
 console.log("End");

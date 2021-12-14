@@ -1,5 +1,4 @@
 
-
  class student
  {
      createRecord(roll_no,firstname,lastname)

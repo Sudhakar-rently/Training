@@ -1,0 +1,29 @@
+GET http://localhost:3000/posts?user=sudha
+###
+
+POST http://localhost:3000/posts
+Content-Type: application/json 
+
+{
+    "id":4,
+    "username": "lkjfvber",
+    "title": "kjfvbjhdfgv"
+}
+
+###
+DELETE http://localhost:3000/posts
+Content-Type: application/json
+
+{
+    "id":3,
+    "username": "ani",
+    "title": "ad"
+}
+
+###
+PUT http://localhost:3000/posts?id=3
+Content-Type: application/json
+
+{
+    "username":"Someone"
+}

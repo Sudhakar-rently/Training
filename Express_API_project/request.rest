@@ -5,7 +5,7 @@ POST http://localhost:3000/posts
 Content-Type: application/json 
 
 {
-    "id":4,
+    "id":3,
     "username": "lkjfvber",
     "title": "kjfvbjhdfgv"
 }
@@ -15,9 +15,9 @@ DELETE http://localhost:3000/posts
 Content-Type: application/json
 
 {
-    "id":3,
-    "username": "ani",
-    "title": "ad"
+    "id":4,
+    "username": "lkjfvber",
+    "title": "kjfvbjhdfgv"
 }
 
 ###

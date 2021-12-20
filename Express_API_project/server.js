@@ -1,11 +1,12 @@
 const express =require("express")
 var bodyParser=require("body-parser")
-var cors=require("cors")
+
 const joi=require("joi")
 const app=express()
 var schemas=require("./schema");
 
 app.use(bodyParser.json());
+
 const posts =[
     {
         id:1,
@@ -24,14 +25,15 @@ app.get("/posts",(req,res) =>{
     res.json(posts)
 })
 
-app.post("/posts",validate('body',schemas.schemas), (req,res)=>
+app.post("/posts",Validate('body',schemas.posts), (req,res)=>
 {
+
     console.log(req.body);
     posts.push(req.body);
     res.json(posts)
 })
 
-app.delete("/posts",(req,res)=>
+app.delete("/posts",Validate('body',schemas.posts), (req,res)=>
 {
     console.log(req.body);
     var i=0;
@@ -54,7 +56,7 @@ app.delete("/posts",(req,res)=>
     res.json(posts);
 }) 
 
-app.put("/posts",(req,res)=>{
+app.put("/posts",Validateput('query',schemas.putidvalid),(req,res)=>{
     console.log(req.query);
     var i=0;
     var l = posts.length;
@@ -71,13 +73,30 @@ app.put("/posts",(req,res)=>{
     res.json(posts);
 })
 
-function validate(p,schema,next){
-    const {error} = Joi.validate(p, schema);
-    if(error){
-      res.json(error.details);
-    }
-    next();
+function Validate(p,schema,next){
+    return (req,res,next)=> {
+        console.log(req[p],schema);
+        const { error } = schema.validate(req[p]);
+
+        const valid= (error==null);
+        if(valid){
+            console.log('Schema validated');
+            next();
+        }
   }
+}
 
-app.listen(3000)
+function Validateput(p,schema,next){
+    return (req,res,next)=> {
+        console.log(req[p],schema);
+        const { error } = schema.validate(req[p]);
 
+        const valid= (error==null);
+        if(valid){
+            console.log('Schema validated');
+            next();
+        }
+  }
+}
+
+app.listen(3000);

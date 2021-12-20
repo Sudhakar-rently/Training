@@ -4,6 +4,7 @@ var bodyParser=require("body-parser")
 const joi=require("joi")
 const app=express()
 var schemas=require("./schema");
+const { reset } = require("nodemon");
 
 app.use(bodyParser.json());
 
@@ -56,8 +57,8 @@ app.delete("/posts",Validate('body',schemas.posts), (req,res)=>
     res.json(posts);
 }) 
 
-app.put("/posts",Validateput('query',schemas.putidvalid),(req,res)=>{
-    console.log(req.query);
+app.put("/posts",Validate('query',schemas.putidvalid),(req,res)=>{
+    console.log(req.body);
     var i=0;
     var l = posts.length;
     var index = -1;
@@ -83,20 +84,9 @@ function Validate(p,schema,next){
             console.log('Schema validated');
             next();
         }
+        else res.json({error});
   }
 }
 
-function Validateput(p,schema,next){
-    return (req,res,next)=> {
-        console.log(req[p],schema);
-        const { error } = schema.validate(req[p]);
-
-        const valid= (error==null);
-        if(valid){
-            console.log('Schema validated');
-            next();
-        }
-  }
-}
 
 app.listen(3000);

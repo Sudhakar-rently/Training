@@ -5,8 +5,8 @@ POST http://localhost:3000/posts
 Content-Type: application/json 
 
 {
-    "id":3,
-    "username": "lkjfvber",
+    "id":4,
+    "username": "lwejfbi",
     "title": "kjfvbjhdfgv"
 }
 
@@ -16,7 +16,7 @@ Content-Type: application/json
 
 {
     "id":4,
-    "username": "lkjfvber",
+    "username": "lwejfbi",
     "title": "kjfvbjhdfgv"
 }
 

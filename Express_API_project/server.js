@@ -61,7 +61,7 @@ app.put("/posts",Validate('query',schemas.putidvalid),(req,res)=>{
     console.log(req.body);
     var i=0;
     var l = posts.length;
-    var index = -1;
+    var index = -1; 
     while (i<l){
         post = posts[i]
         if(req.query.id == post.id) {
